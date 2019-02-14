@@ -1,0 +1,3 @@
+Django
+djangomako==1.1.1
+mysqlclient

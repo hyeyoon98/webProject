@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="User">
+
+	<!-- #### 회원 리스트#### -->
+	<select id="list" resultType="com.ds.vo.User">
+
+		select *
+		from user
+
+	</select>
+
+	<!-- #### 회원 상태별 리스트#### -->
+	<select id="status_list" parameterType="String"
+		resultType="com.ds.vo.User">
+
+		select *
+		from user
+		where status
+		= #{status}
+
+	</select>
+
+	<!-- #### 회원송금 상태별 리스트#### -->
+	<select id="is_send_list" parameterType="String"
+		resultType="com.ds.vo.User">
+
+		select *
+		from user
+		where is_send
+		= #{is_send}
+
+	</select>
+
+	<!-- #### input입력 회원검색 기능#### -->
+	<select id="search" parameterType="com.ds.vo.User"
+		resultType="com.ds.vo.User">
+
+		SELECT *
+		FROM user
+		WHERE email = #{email}
+		OR name = #{name}
+		OR phone = #{phone}
+		OR point = #{point}
+		OR wallet_address = #{wallet_address}
+		OR ref_email = #{ref_email}
+		OR sosok = #{sosok}
+		OR grade = #{grade}
+		OR type = #{type}
+		
+	</select>
+	
+	<!-- #### 회원 수정 #### -->
+	<update id="user_update" parameterType="map">
+	
+		update user
+		set name = #{name}
+		where email = #{email}
+	
+	</update>
+	
+	<!-- #### 회원상태 수정 #### -->
+	<update id="status_update" parameterType="map">
+		
+		update user
+		set status = #{status}
+		where email = #{email}
+		
+	</update>
+	
+	<!-- #### 회원송금 수정 #### -->
+	<update id="is_send_update" parameterType="map">
+		
+		update user
+		set is_send = #{is_send}
+		where email = #{email}
+		
+	</update>
+	
+</mapper>

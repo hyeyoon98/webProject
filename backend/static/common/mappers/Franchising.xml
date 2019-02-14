@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Franchising">
+
+	<!-- #### 가맹점 등록 #### -->
+	<insert id="fran_register" useGeneratedKeys="false"
+		parameterType="map">
+
+INSERT INTO franchising_master
+		(cate
+		,comname
+		,phone
+		,area
+		,address
+		,info
+		,code
+		,email
+		)
+VALUES (#{cate}
+		,#{comname}
+		,#{phone}
+		,#{area}
+		,#{address}
+		,#{info}
+		,#{code}
+		,#{email}
+		)
+
+	</insert>
+	
+	<!-- #### 가맹점 리스트#### -->
+	<select id="all_franchising" resultType="com.ds.vo.Franchising">
+
+		select *
+		from franchising_master
+
+	</select>
+	
+	<!-- #### 가맹점 상태별 리스트#### -->
+	<select id="status_fran" parameterType="String"
+		resultType="com.ds.vo.Franchising">
+
+		select *
+		from franchising_master
+		where status
+		= #{status}
+
+	</select>
+	
+	<!-- #### 가맹점 input 검색 리스트 #### -->
+	<select id="fran_search" parameterType="com.ds.vo.Franchising"
+		resultType="map">
+		
+		select 
+			c.name,
+			f.area,
+			f.cate,
+			f.comname,
+			f.phone,
+			f.status,
+			f.regist_date,
+			f.info
+		from franchising_master f
+		join code_master c on f.code = c.code
+		where f.cate = #{cate} or
+			f.comname = #{comname} or 
+			f.area = #{area} or
+			f.phone = #{phone} or
+			f.code = #{code}
+			f.email = #{email}
+	</select>
+
+	<!-- #### 가맹점 등록시 해당이메일 가맹으로 type변경 승인  #### -->
+ 	<update id="fran_approval" parameterType="map">
+ 	
+ 		update user
+ 		set type = #{type}
+ 		where email = #{email}
+ 		
+ 	</update>
+ 	
+ 	<!-- #### 가맹점상태 승인 #### -->
+ 	<update id="fran_status_update" parameterType="map">
+ 		
+ 		update franchising_master
+ 		set fran_approval = '1'
+ 		where email = #{email}
+ 	
+ 	</update>
+
+</mapper>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Login">
+
+	<!-- #### 로그인시 해당 이메일이 있는지 유무 #### -->
+	<select id="confirm" parameterType="map" resultType="int">
+
+		SELECT
+		count(*)
+		FROM user
+		WHERE email = #{email}
+
+	</select>
+
+	<!-- #### 로그인시 해당 이메일과 일치한 pass가져오기 #### -->
+	<select id="compare" parameterType="map" resultType="String">
+
+		SELECT pass
+		FROM user
+		WHERE email = #{email}
+
+	</select>
+
+	<!-- #### 로그인시 활성화 &비활성화 상태 가져오기 #### -->
+	<select id="status" parameterType="map" resultType="String">
+
+		SELECT status
+		FROM user
+		WHERE email = #{email}
+
+	</select>
+
+	<!-- #### 로그인시 세션에 추가할 이름 가져오기 #### -->
+	<select id="name" parameterType="map" resultType="String">
+
+		SELECT name
+		FROM user
+		WHERE email = #{email}
+
+	</select>
+
+</mapper>

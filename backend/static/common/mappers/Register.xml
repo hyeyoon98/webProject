@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Register">
+
+	<!-- #### 회원가입 #### -->
+	<insert id="register" useGeneratedKeys="false"
+		parameterType="map">
+
+INSERT INTO user
+		(email
+		,pass
+		,NAME
+		,phone
+		,wallet_address
+		,ref_code
+		,sosok
+		)
+VALUES (#{email}
+		,#{pass}
+		,#{name}
+		,#{phone}
+		,#{wallet_address}
+		,#{ref_code}
+		,#{sosok}
+		)
+		
+
+	</insert>
+
+	<!-- #### 추천인가입시 추천인에게 포인트지급 #### -->
+<!-- 	<update id="ref_update" parameterType="map"> -->
+	
+<!-- 		UPDATE user -->
+<!-- 		SET point = point + 2 -->
+<!-- 		WHERE email = #{ref_email} -->
+		
+<!-- 	</update> -->
+
+<!-- 	#### 회원가입시 포인트지급 내역 #### -->
+<!-- 	<insert id="point_log" parameterType="map"> -->
+	
+<!-- INSERT INTO point_log -->
+<!-- 		(email -->
+<!-- 		,point -->
+<!-- 		,code -->
+<!-- 		) -->
+<!-- VALUES (#{email} -->
+<!-- 		,10 -->
+<!-- 		,'1') -->
+
+<!-- 	</insert> -->
+	
+<!-- 	#### 추천인가입시 추천인에게 포인트지급 내역 #### -->
+<!-- 	<insert id="ref_point_log" parameterType="map"> -->
+	
+<!-- INSERT INTO point_log -->
+<!-- 		(email -->
+<!-- 		,point -->
+<!-- 		,code -->
+<!-- 		) -->
+<!-- VALUES (#{ref_email} -->
+<!-- 		,2 -->
+<!-- 		,'2') -->
+		
+<!-- 	</insert> -->
+	
+<!-- 	#### 추천인 존재유무 #### -->
+<!-- 	<select id="ref_email_select" parameterType="String" -->
+<!-- 	 resultType="int"> -->
+	
+<!-- 		SELECT count(*) -->
+<!-- 		FROM user -->
+<!-- 		WHERE email = #{ref_email} -->
+		
+<!-- 	</select> -->
+	
+</mapper>

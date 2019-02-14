@@ -1,0 +1,63 @@
+html {
+  height: calc(100% - 56px);
+}
+.btn-logout{
+  border: solid 1px #ffffff;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-radius: 4px;
+  padding-left: 14px;
+  padding-right: 15px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: bold;
+}
+.btn-logout:hover{
+  background-color: #ffffff;
+  color: #ffc107;
+}
+.bottom-logout{
+  border-top: solid 1px #424242;
+  padding: 10px;
+  color: #ffffff;
+  cursor: pointer;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  text-align: center;
+}
+.bottom-logout-icon{
+  margin-right: 10px;
+}
+.logo-title{
+  margin-left: 16px !important;
+  color: #ffffff;
+}
+.info-box{
+  margin-left: 10px;
+  margin-right: 20px;
+}
+.info-box-top{
+  font-weight: bold
+}
+.info-box-bottom{
+  font-size: 12px;
+}
+.top-menu-deco{
+  color: #ffffff;
+}
+
+@media screen and (max-width: 450px) {
+  .login-container {
+    width: 75% !important;
+  }
+  .common-title {
+    font-size: 25px !important;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .nav {
+    display: none;
+  }
+}

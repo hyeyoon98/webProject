@@ -1,0 +1,29 @@
+<html>
+<head>
+    <%include file="../common/head.html"/>
+    <%include file="../common/header.html"/>
+    <%include file="../common/menu.html"/>
+    <%block name="css"></%block>
+</head>
+<body>
+<section style="width: 100%">
+<div id="content" class="app-content box-shadow-0" role="main">
+  <div class="content-main" id="content-main">
+    <div class="padding">
+      <div class="box">
+        <div class="box-header light lt">
+          <h3><%block name="title"></%block></h3>
+          <small><%block name="subtitle"></%block></small>
+        </div>
+        <div class="box-body">
+          <%block name="content"></%block>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+</body>
+    <%include file="../common/jquery.html"/>
+    <%block name="js"></%block>
+</html>

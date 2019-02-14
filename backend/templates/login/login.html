@@ -1,0 +1,57 @@
+<%include file="../common/head.html"/>
+
+<%block name="css">
+<style>
+.login-container {
+  min-width: 240px !important;
+  width: 450px;
+  margin: auto;
+  box-shadow: 1px 1px 1px 1px #aaaaaa;
+  padding: 30px;
+  background-color: #FFFFFF;
+  line-height: 1;
+  border-radius: 10px;
+}
+.common-login-input{
+  background-color: #E5EBEB;
+  color: #000000;
+  font-size: 12px;
+  font-weight: bold;
+  height: 45px;
+}
+.common-title {
+  color: black;
+  text-align: center;
+  font-size: 30px;
+  padding-bottom: 30px;
+  padding-top: 15px;
+}
+.button {
+  padding-top: 15px;
+}
+.btn-login{
+  background-color: #ffc107;
+  color: #ffffff;
+  font-size: 16px;
+}
+</style>
+</%block>
+
+<div class="login-container">
+  <div class="common-title">Unipay Admin</div>
+  <div class="form-group">
+    <label for="login_id"></label>
+    <input type="text" class="form-control common-login-input" id="login_id" placeholder="아이디를 입력해주세요">
+  </div>
+
+  <div class="form-group">
+    <label for="login_pw"></label>
+    <input type="password" class="form-control common-login-input" id="login_pw" placeholder="비밀번호를 입력해주세요">
+  </div>
+
+  <div class="button">
+    <button id="btn-Yes" class="btn btn-lg btn-block btn-login">로 그 인</button>
+  </div>
+</div>
+
+<%block name="js"></%block>
