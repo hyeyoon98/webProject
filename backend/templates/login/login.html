@@ -1,57 +1,85 @@
-<%include file="../common/head.html"/>
-
-<%block name="css">
+<!DOCTYPE html>
+<html>
 <style>
-.login-container {
-  min-width: 240px !important;
-  width: 450px;
-  margin: auto;
-  box-shadow: 1px 1px 1px 1px #aaaaaa;
-  padding: 30px;
-  background-color: #FFFFFF;
-  line-height: 1;
-  border-radius: 10px;
-}
-.common-login-input{
-  background-color: #E5EBEB;
-  color: #000000;
-  font-size: 12px;
-  font-weight: bold;
-  height: 45px;
-}
-.common-title {
-  color: black;
-  text-align: center;
-  font-size: 30px;
-  padding-bottom: 30px;
-  padding-top: 15px;
-}
-.button {
-  padding-top: 15px;
-}
-.btn-login{
-  background-color: #ffc107;
-  color: #ffffff;
-  font-size: 16px;
-}
+	body{
+		background-color: #51AAD2;
+	}
+	.login-container{
+		margin: 0 auto;
+		margin-top: 100px;
+		width: 450px;
+		border: 1px solid gray;
+		border-radius: 8px;
+		background-color: WHITE;
+	}
+	label{
+		display: block;
+	}
+	.username-box, .password-box{
+		padding: 10px;
+		padding-left: 50px;
+
+	}
+	.password-box{
+		margin-bottom: 50px;
+	}
+	#username, #password{
+		width: 350px;
+		height: 25px;
+		border-radius: 5px
+	}
+	.subject{
+		text-align: center;
+		padding: 25px;
+		font-size: 30px;
+		font-weight: 700;
+	}
+	.login-btn{
+		background-color: #0069D9;
+		color: white;
+		border-color: #0069D9;
+		border-radius: .25rem;
+		width: 350px;
+		height: 40px;
+		font-size: 20px;
+		margin-top: 40px;
+	}
 </style>
-</%block>
-
+<head>
+	<title></title>
+</head>
+<body>
+  <div id="csrf_token">${csrf_token}</div>
 <div class="login-container">
-  <div class="common-title">Unipay Admin</div>
-  <div class="form-group">
-    <label for="login_id"></label>
-    <input type="text" class="form-control common-login-input" id="login_id" placeholder="아이디를 입력해주세요">
-  </div>
-
-  <div class="form-group">
-    <label for="login_pw"></label>
-    <input type="password" class="form-control common-login-input" id="login_pw" placeholder="비밀번호를 입력해주세요">
-  </div>
-
-  <div class="button">
-    <button id="btn-Yes" class="btn btn-lg btn-block btn-login">로 그 인</button>
-  </div>
+	<div class="subject">CQRE 웹팀</div>
+	<div class="username-box">
+		<label for="username">이름</label>
+		<input type="text" id="username">
+	</div>
+		<div class="password-box">
+		<label for="password">비밀번호</label>
+		<input type="text" id="password">
+		<button class="login-btn" onclick="click_login()">로그인</button>
+	</div>
+	<div></div>
 </div>
-
-<%block name="js"></%block>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+  
+  function click_login(){
+    var csrf_token = $('#csrf_token').text();
+    var username = $('#username').val();
+    var password = $('#password').val();
+    console.log(username,password)
+    $.post("/api_login", {
+      csrfmiddlewaretoken: csrf_token,
+      username: username,
+      password: password
+    })
+    .done(function(data){
+      console.log(data);
+    })
+  }
+</script>
+</html>

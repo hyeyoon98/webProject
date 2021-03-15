@@ -6,4 +6,12 @@ from django.db import connections
 
 
 def login(request):
+    print('login')
     return render(request, 'login/login.html')
+
+def api_login(request):
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+    print('dasdasdsadsadasd')
+    print("user =>>",username,password)
+    return JsonResponse({'result':'success'})
